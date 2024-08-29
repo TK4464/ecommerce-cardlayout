@@ -1,12 +1,36 @@
+"use client"
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 
 const Hero = () => {
+    const [isLowPowerMode, setIsLowPowerMode] = useState(false);
+
+    const toggleLowPowerMode = () => {
+        setIsLowPowerMode(!isLowPowerMode);
+    };
+
     return (
-        <section className="py-0 md:h-[900px] relative overflow-hidden bg-primary/5">
-            <video src="/hero/background.mp4" autoPlay muted loop playsInline className=" w-full h-full z-[-100] absolute object-cover" />
-            {/* Dark Overlay */}
-            <div className="absolute z-[-10] w-full h-full bg-black opacity-50"></div>
+        <section className="py-0 md:h-[900px] relative overflow-hidden">
+            {/* 切り替えオプション */}
+            <button onClick={toggleLowPowerMode} className="absolute bottom-4 right-4 z-50 text-white text-sm sm:text-base ">
+                {isLowPowerMode ? '動画モードに切り替え' : '静止画モードに切り替え'}
+            </button>
+
+            {/* 条件に応じてビデオまたは静止画を表示 */}
+            {isLowPowerMode ? (
+                <div className="w-full h-full z-[-100] absolute bg-gradient-to-b from-slate-400 via-orange-200 to-slate-400 "></div>
+            ) : (
+                <div>
+                    <video autoPlay muted loop playsInline className="w-full h-full z-[-100] absolute object-cover">
+                        <source src="/hero/background.mp4" type="video/mp4" />
+                        ブラウザはこの動画をサポートしていません。
+                    </video>
+                
+                    <div className="absolute z-[-10] w-full h-full bg-black opacity-50"></div>
+                </div>
+            )}
+        
             <div className="container mx-auto py-48 md:py-0">
                 <div className="flex items-center justify-between">
                     {/* text */}
