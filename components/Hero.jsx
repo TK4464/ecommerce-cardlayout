@@ -13,9 +13,11 @@ const Hero = () => {
     return (
         <section className="py-0 md:h-[900px] relative overflow-hidden">
             {/* 切り替えオプション */}
-            <button onClick={toggleLowPowerMode} className="absolute bottom-4 right-4 z-50 text-white text-sm sm:text-base ">
-                {isLowPowerMode ? '動画モードに切り替え' : '静止画モードに切り替え'}
-            </button>
+            <div className="container absolute inset-x-0 bottom-4 grid place-items-center">
+                <button onClick={toggleLowPowerMode} className="z-50 text-white text-sm sm:text-base py-2 rounded">
+                    {isLowPowerMode ? '動画モードに切り替え' : '静止画モードに切り替え'}
+                </button>
+            </div>
 
             {/* 条件に応じてビデオまたは静止画を表示 */}
             {isLowPowerMode ? (
