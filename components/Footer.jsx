@@ -4,7 +4,7 @@ import { RiYoutubeFill, RiFacebookFill, RiInstagramFill, RiTwitterXFill} from "r
 
 const Footer = () => {
     return (
-        <footer className="pt-12 xl:pt-24 border-y border-primary/20 text-primary text-center" >
+        <footer className="pt-12 xl:pt-24 border-t border-primary/20 text-primary text-center" >
             <div className="container mx-auto ">
                 <div className="flex flex-col  gap-8">
                     <div>
